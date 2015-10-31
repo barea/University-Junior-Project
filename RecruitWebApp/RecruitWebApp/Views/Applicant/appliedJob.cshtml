@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RecruitWebApp.Models.Job>
+
+@{
+    ViewBag.Title = "appliedJob";
+}
+
+
+<table >
+   
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="@Url.Content("~/Logo/" + item.CompId + ".png" )" alt="image" width="65" height="65" />
+        </td>
+        <td>
+           <h2>@Html.ActionLink(item.JobTitle, "Details", "Job", new { id = item.JobId },null)</h2>
+            @*<h2>@Html.Label(item.JobTitle)</h2>*@
+            @Html.DisplayFor(modelItem => item.JobType)
+            <br />
+            @Html.DisplayFor(modelItem => item.Salary) 
+            <hr />
+        </td>
+        
+    </tr>
+}
+
+</table>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RecruitWebApp.Models.Job>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+    <h2>Search</h2>
+<search>
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            Job Title: @Html.TextBox("jobtitle")
+            Country: @Html.DropDownList("Country", "---Select Country---")
+            <input type="submit" value="Search" />
+        </p>
+    }
+
+</search>
+    @*<tr>*@
+    @*<th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearsOfExperience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>*@
+    @*</tr>*@
+
+
+    <table>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    <img src="@Url.Content("~/Logo/" + item.CompId + ".png" )" alt="image" width="100" height="100" />
+                </td>
+                <td>
+                    <h1>@Html.ActionLink(item.JobTitle, "Details", new { id = item.JobId }) </h1>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName) |
+                    @Html.DisplayFor(modelItem => item.Country.CountryName) |
+                    @Html.DisplayFor(modelItem => item.Salary)
+                    <br />
+                    @Html.DisplayFor(modelItem => item.PostDate)
+                    <hr />
+
+                </td>
+               
+            </tr>
+        }
+       
+    </table>
+

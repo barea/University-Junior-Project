@@ -1,0 +1,62 @@
+﻿@model RecruitWebApp.Models.Job
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@*<h2>Details</h2>*@
+
+<fieldset>
+    <legend>Job</legend>
+    
+
+     <Logo>
+         <img src="@Url.Content("~/Logo/" + Model.CompId + ".png" )" alt="image" width="150" height="110" />
+     </Logo>
+    
+    <over-view>
+        <h2>Job Overview</h2>
+        
+        <ul>
+            <li>Company: @ViewBag.company</li>
+            <li>Category: @Html.DisplayFor(model => model.Category.CategoryName)</li>
+            <li>Country: @Html.DisplayFor(model => model.Country.CountryName)</li>
+            <li>JobType: @Html.DisplayFor(model => model.JobType)</li>
+            <li>Years Of Experience: @Html.DisplayFor(model => model.YearsOfExperience)</li>
+            <li>Salary: @Html.DisplayFor(model => model.Salary)</li>
+        </ul> 
+
+    </over-view>
+
+        <br />
+        <detail>
+            <div class="display-field">
+                <br />
+                <aside>
+                    @*<input type="button" value="Apply" onclick="location.href='@Url.Action("Create", "JobReqest", new {jobId = Model.JobId})'" />*@
+                    <a href='@Url.Action("Create", "JobReqest", new {jobId = Model.JobId})'>
+                        <img src='@Url.Content("~/Images/Green_Apply_Button.jpg")' alt="kjhkj" width="120" height="30">
+                    </a>        
+
+                 </aside>
+                <p class="site-title">
+                    @Html.DisplayFor(model => model.JobTitle)
+                </p>
+                @Html.DisplayFor(model => model.PostDate)
+                
+               
+            </div>
+            <h2>Description:</h2>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Description)
+                </div>
+
+</detail>
+        <br />
+
+    <descrip>
+        <h3>About Company:</h3>
+        @ViewBag.About
+    </descrip>
+
+</fieldset>

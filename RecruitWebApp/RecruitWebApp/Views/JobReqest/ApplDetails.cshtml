@@ -1,0 +1,91 @@
+﻿@model IEnumerable<RecruitWebApp.Models.Applicant>
+
+@{
+    ViewBag.Title = "ApplDetails";
+}
+
+@*<h2>ApplDetails</h2>*@
+
+
+<descrip>
+    <table>
+       
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                 <tr>
+                <applimg>
+                    <img src="@Url.Content("~/AppImg/" + item.PersonalImage)" alt="image" width="150" height="150" />
+                </applimg>
+               
+                 </tr>
+            <br />
+
+           
+
+            <tr>  
+                    <h3>Name: </h3>@Html.DisplayFor(modelItem => item.FirstName)
+               
+                </tr>
+            <tr>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </tr>
+            <br />
+
+            <tr>
+                <h3>Date Of Birth: </h3>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </tr>
+            <br />
+
+            <tr>
+                <h3>Gender: </h3>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </tr>
+            <br />
+            <tr>
+                <h3>Country:</h3>
+                @Html.DisplayFor(modelItem => item.Country.CountryName)
+            </tr>
+            <br />
+
+            <rt>
+                <h3>Employment Status:</h3>
+                @Html.DisplayFor(modelItem => item.EmploymentStatus)
+            </rt>
+            <br />
+
+            <tr>
+                <h3>Academic Qualification:</h3>
+                @Html.DisplayFor(modelItem => item.AcademicQualification)
+            </tr>
+            <br />
+
+            <tr>
+               <h3>Study Specialism:</h3> 
+               @Html.DisplayFor(modelItem => item.StudySpecialism)
+            </tr>
+            <br />
+
+            <tr>
+                <h3>Phone Number:</h3>
+                @Html.DisplayFor(modelItem => item.PhoneNum)
+            </tr>
+            <br />
+
+            <tr>
+                @*@Html.DisplayFor(modelItem => item.CV)*@
+              <h2>@Html.ActionLink("View CV", "ApplCV", new { filename = item.CV }, new { target = "_blank" })</h2>  
+            </tr>
+
+
+            @*<td>
+
+                    @Html.ActionLink("Details", "Details", new { id=item.ApplicantId })
+                </td>*@
+            </tr>
+        }
+
+    </table>
+</descrip>

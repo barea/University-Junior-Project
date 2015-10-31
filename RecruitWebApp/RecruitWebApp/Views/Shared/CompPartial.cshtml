@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "CompPartial";
+}
+
+@*<h2>CompPartial</h2>*@
+
+   
+    <li>
+        @Html.ActionLink("Profile", "Details", "Company", new { id = @ViewBag.ComId },null)
+    </li>
+    <li>
+        @Html.ActionLink("Post new Job", "Create", "Job")
+    </li>
+    <li>
+        @Html.ActionLink("Jobs & Applicants", "ComJob", "JobReqest")
+    </li>
+

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<RecruitWebApp.Models.JobReqest>
+
+@{
+    ViewBag.Title = "ApplReq";
+}
+
+<h2>Applicants</h2>
+<br />
+<over-view>
+    @using (Html.BeginForm())
+    {
+        <h2>Filter by</h2>
+        <div>
+            @Html.Label("Gender ")
+            @Html.DropDownList("gender", new List<SelectListItem> { { new SelectListItem { Text = "---Select Gender---", Value = "null" } }, { new SelectListItem { Text = "Male", Value = "Male" } }, { new SelectListItem { Text = "Female", Value = "Female" } } })
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Country")
+            @Html.DropDownList("Country", "---Select Country---")
+
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Employment Status ")
+            @Html.DropDownList("EmplStatus", new List<SelectListItem> { { new SelectListItem { Text = "---Employment Status---", Value = "null" } }, { new SelectListItem { Text = "Employed", Value = "Employed" } }, { new SelectListItem { Text = "Unemployed", Value = "Unemployed" } } })
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Academic Qualification ")
+            @Html.DropDownList("Qualification", new List<SelectListItem> { { new SelectListItem { Text = "---AcademicQualification---", Value = "null" } }, { new SelectListItem { Text = "Bachelor", Value = "Bachelor" } }, { new SelectListItem { Text = "Master", Value = "Master" } }, { new SelectListItem { Text = "PhD", Value = "PhD" } } })
+        </div>
+        <br />
+
+       
+        <div>
+            @Html.Label("age between:")
+            @Html.TextBox("minage")
+            @Html.Label("And:")
+            @Html.TextBox("maxage")
+
+        </div>
+        <br />
+
+        <div>
+            <input type="submit" value="Search" />
+        </div>
+    }
+</over-view>
+
+    <table>
+        <tr></tr>
+
+        @foreach (var item in Model)
+{
+      <detail>
+
+            <h1>@Html.ActionLink(item.Applicant.FirstName + " " + item.Applicant.LastName, "ApplDetails", new { Id = item.ApplicantId })</h1>
+      
+      </detail>
+}
+
+    </table>

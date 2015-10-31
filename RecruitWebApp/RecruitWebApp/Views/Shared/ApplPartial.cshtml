@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "ApplPartial";
+}
+<li>
+    @Html.ActionLink("Home", "Search", "Job")
+</li>
+<li>
+    @Html.ActionLink("Filter", "Filter", "Job")
+</li>
+<li>
+    @Html.ActionLink("Profile", "Details", "Applicant", new { id = @ViewBag.ApplId },null)
+</li>

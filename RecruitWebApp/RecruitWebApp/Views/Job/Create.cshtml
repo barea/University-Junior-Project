@@ -1,0 +1,101 @@
+﻿@model RecruitWebApp.Models.Job
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@*<h2>@Html.ActionLink("Job List", "ComJob", "JobReqest")</h2>*@
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <descrip>
+       <br />
+        <div class="editor-label">
+            @Html.Label("Job Title: ")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.JobTitle)
+            @Html.ValidationMessageFor(model => model.JobTitle)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryId, "Category: ")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CategoryId")
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>
+        <br />
+
+        @*<div class="editor-field">
+           @Html.HiddenFor(model => model.CompId, new { @Value = @ViewBag.comId })
+            @Html.ValidationMessageFor(model => model.CompId)
+        </div>*@
+       <div class="editor-field">
+            @Html.HiddenFor(mode => Model.PostDate, new { @Value = DateTime.Now.ToShortDateString() })
+            @Html.ValidationMessageFor(model => model.PostDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Salary)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Salary)$
+            @Html.ValidationMessageFor(model => model.Salary)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Job Location: ")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CountryId")
+            @Html.ValidationMessageFor(model => model.CountryId)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Job Type: ")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.JobType, new List<SelectListItem>
+            { new SelectListItem { Text = "Part Time"}, new SelectListItem{Text = "Full Time"},
+             new SelectListItem{Text = "Contract"}, new SelectListItem{Text ="Freelance"} })
+            @Html.ValidationMessageFor(model => model.JobType)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Years Of Experience")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.YearsOfExperience)
+            @Html.ValidationMessageFor(model => model.YearsOfExperience)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        <br />
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </descrip>
+}
+
+<div>
+    
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

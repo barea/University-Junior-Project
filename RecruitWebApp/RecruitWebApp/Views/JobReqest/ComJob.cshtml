@@ -1,0 +1,94 @@
+﻿@model IEnumerable<RecruitWebApp.Models.Job>
+
+@{
+    ViewBag.Title = "ComJob";
+}
+
+<h2>Jobs List :</h2>
+<br />
+
+    <table>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CategoryId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompId)
+                </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CountryId)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.JobType)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.YearsOfExperience)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            
+
+                @*<td>
+                   
+                </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CategoryId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompId)
+                    </td>*@
+                @*<td>
+                   
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CountryId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JobType)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.YearsOfExperience)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
+
+
+    <descrip>
+
+
+       <h2>@Html.DisplayFor(modelItem => item.JobTitle)</h2>
+        @*<h2>@Html.ActionLink(item.JobTitle, "Details", "Job", new { id = item.JobId }, null)</h2>*@
+        @Html.DisplayFor(modelItem => item.PostDate)
+        <h4>
+            @Html.ActionLink("View Applicants", "ApplReq", new { Id = item.JobId }) |
+            @Html.ActionLink("Edit", "Edit", "Job", new { id = item.JobId }, null)
+        </h4>
+        @*@Html.ActionLink("Details", "Details", "Job", new { id = item.JobId }, null) |*@
+        @*@Html.ActionLink("Delete", "Delete", new { id=item.JobId })*@
+
+    </descrip>
+
+
+
+        }
+
+    </table>

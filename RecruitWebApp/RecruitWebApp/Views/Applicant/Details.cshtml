@@ -1,0 +1,104 @@
+﻿@model RecruitWebApp.Models.Applicant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<profile>
+    <br />
+    <applimg>
+        <div class="display-label">
+            <img src="@Url.Content("~/AppImg/" + Model.PersonalImage)" alt="image" width="150" height="150" />
+            <filter>
+                <div class="site-title">
+                    Welcome @Html.DisplayFor(model => model.FirstName)
+                </div>
+                <p>
+                  <h3>@Html.ActionLink("Edit your Profile", "Edit", new { id = Model.ApplicantId })</h3>
+                </p>
+            </filter>
+        </div>
+        
+    </applimg>
+    <br />
+    <br />
+
+    <applimg>
+        <div class="site-title">Acount Information</div>
+        <div class="display-field">
+          <h4>User Name :  @Html.DisplayFor(model => model.UserName)</h4>
+        </div>
+       
+        <div class="display-field">
+         <h4>@Html.ActionLink("Change Your Password", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
+        </h4> 
+        </div>
+    </applimg>
+
+    
+       
+    <applimg>
+        <div class="site-title">Personal Information</div>
+        <div class="display-field">
+          <h4>First Name : @Html.DisplayFor(model => model.FirstName)</h4> 
+        </div>
+
+        
+        <div class="display-field">
+           <h4>Last Name : @Html.DisplayFor(model => model.LastName)</h4> 
+        </div>
+
+        
+        <div class="display-field">
+           <h4>Date Of Birth : @Html.DisplayFor(model => model.DateOfBirth)</h4> 
+        </div>
+
+        
+        <div class="display-field">
+            <h4>Gender : @Html.DisplayFor(model => model.Gender)</h4>
+        </div>
+
+        
+        <div class="display-field">
+           <h4>Country : @Html.DisplayFor(model => model.Country.CountryName)</h4> 
+        </div>
+
+        <div class="display-field">
+           <h4>Phone Number : @Html.DisplayFor(model => model.PhoneNum)</h4> 
+        </div>
+    </applimg>
+
+    <applimg>
+        
+        <div class="site-title">Detailed information</div>
+        <div class="display-field">
+          <h4>Employment Status : @Html.DisplayFor(model => model.EmploymentStatus)</h4>  
+        </div>
+
+       
+        <div class="display-field">
+           <h4>Highest Academic Qualification : @Html.DisplayFor(model => model.AcademicQualification)</h4> 
+        </div>
+
+        
+        <div class="display-field">
+           <h4>Study Specialism : @Html.DisplayFor(model => model.StudySpecialism)</h4> 
+        </div>
+
+        <div class="display-field">
+           <h3>@Html.ActionLink("View CV", "ApplCV", new { filename = Model.CV, id = Model.ApplicantId }, new { target = "_blank" })</h3>
+
+        </div>
+    </applimg>
+
+
+    <applimg>
+        <div class="site-title">Applied job:</div>
+
+        @{Html.RenderAction("appliedJob", new { id = Model.ApplicantId });}
+    </applimg>
+
+</profile>
+

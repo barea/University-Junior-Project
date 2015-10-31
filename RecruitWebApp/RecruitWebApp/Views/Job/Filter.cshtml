@@ -1,0 +1,103 @@
+﻿@model IEnumerable<RecruitWebApp.Models.Job>
+
+@{
+    ViewBag.Title = "Filter";
+}
+
+    
+    <filter>
+    <h2>Filter by</h2>
+    @using (Html.BeginForm())
+    {
+
+        <div>
+            @Html.Label("Job Title")
+            @Html.TextBox("jobtitle")
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Job Category")
+            @Html.DropDownList("categoryId", "---Select Category---")
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Country")
+            @Html.DropDownList("Country", "---Select Country---")
+
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Job Type")
+            @Html.CheckBox("Full", false)Full Time <br />
+            @Html.CheckBox("Part", false)Part Time <br />
+            @Html.CheckBox("Contr", false)Contract <br />
+            @Html.CheckBox("Free", false)Freelance <br />
+
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Salary Range")
+            @Html.TextBox("salrfrom")$
+            @Html.ValidationMessage("salrfrom")
+            to:<br />
+            @Html.TextBox("salrto")$
+            @Html.ValidationMessage("salary")
+
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Years of Experience")
+            Less than: @Html.TextBox("Experience")year
+            @Html.ValidationMessage("Experience")
+        </div>
+        <br />
+
+        <div>
+            @Html.Label("Show results from")
+            @Html.DropDownList("date", new List<SelectListItem>
+            { {new SelectListItem{Text = "Any", Value = "Any"}},{new SelectListItem { Text = "Today", Value = "Today" }},
+            { new SelectListItem { Text = "Last week", Value = "-7" }}, {new SelectListItem{Text = "Last 2 week" , Value="-14"}},
+            {new SelectListItem{Text = "Last 3 week",Value="-21"} } , {new SelectListItem{Text = "Last month",Value = "-28"}}})
+        </div>
+        <br />
+
+        <div>
+            <input type="submit" value="Search" />
+        </div>
+
+
+    }
+
+
+</filter>
+
+    <div class="float-left">
+
+        <table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Content("~/Logo/" + item.CompId + ".png" )" alt="image" width="100" height="100" />
+                    </td>
+                    <td>
+                        <h1>@Html.ActionLink(item.JobTitle, "Details", new { id = item.JobId }) </h1>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName) |
+                        @Html.DisplayFor(modelItem => item.Country.CountryName) |
+                        @Html.DisplayFor(modelItem => item.Salary)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.PostDate)
+                        <hr />
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+

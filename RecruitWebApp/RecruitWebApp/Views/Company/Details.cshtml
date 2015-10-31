@@ -1,0 +1,61 @@
+﻿@model RecruitWebApp.Models.Company
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<profile>
+    <br />
+    <applimg>
+        
+        <div class="display-field">
+            <img src="@Url.Content("~/Logo/"+ Model.Logo)" alt="image" width="150" height="150" />
+
+            <filter>
+                <p class="site-title" >
+                    @*Welcome @Html.DisplayFor(model => model.CompanyName)*@
+                  @Html.Label("Welcome "+ User.Identity.Name) 
+                </p>
+                <p>
+                    <h3>@Html.ActionLink("Edit your Profile", "Edit", new { id = Model.ID })</h3>
+                </p>
+            </filter>
+        </div>
+
+    </applimg>
+
+    <br />
+    <br />
+    <applimg>
+        <div class="site-title">Info</div>
+
+        <div class="display-field">
+            <h4>Company Name : @Html.DisplayFor(model => model.CompanyName)</h4>
+        </div>
+
+        <div class="display-field">
+           <h4>Location : @Html.DisplayFor(model => model.Country.CountryName)</h4>
+        </div>
+
+        
+        <div class="display-field">
+           <h4>Establish Date : @Html.DisplayFor(model => model.EstablishDate)</h4>
+        </div>
+    </applimg>
+
+    <applimg>
+        <div class="site-title">About</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.About)
+        </div>
+    </applimg>
+
+
+       
+
+       
+</profile>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID })
+</p>*@

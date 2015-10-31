@@ -1,0 +1,29 @@
+﻿@model RecruitWebApp.Models.JobReqest
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>JobReqest</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Jobnum)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Jobnum)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Applicant.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Applicant.UserName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.JobReqestId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

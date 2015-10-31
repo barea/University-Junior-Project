@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Registeration";
+}
+
+<detail>
+    <table>
+        <td>
+            @using (Html.BeginForm())
+            {
+                <a href='@Url.Action("Register", "Account", new { Type = "Applicant" })'>
+                    <img src='@Url.Content("~/Images/looking-for-a-job.jpg")' width="125" height="125" alt="kjhkj">
+                </a>        }
+        </td>
+        
+        <td>
+            <div class="site-title">
+                @Html.ActionLink("Looking For Job", "Register", "Account", new { Type = "Applicant" }, null)
+            </div>
+        </td>
+       
+    </table>
+</detail>
+
+            
+<detail>
+    <table>
+        <td>
+            @using (Html.BeginForm())
+            {
+                <a href='@Url.Action("Register", "Account", new { Type = "Company" })'>
+                    <img src='@Url.Content("~/Images/Hiring-The-Right-Sales-People-Sales-Management-Workshop.jpg")' width="125" height="125" alt="kjhkj">
+                </a>        }
+        </td>
+        <td>
+            <div class="site-title">
+               @Html.ActionLink("looking For Employees", "Register", "Account", new { Type = "Company" }, null)
+            </div>
+        </td>
+       
+    </table>
+   
+
+</detail>
+

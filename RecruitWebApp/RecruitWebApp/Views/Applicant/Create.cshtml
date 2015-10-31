@@ -1,0 +1,190 @@
+﻿@model RecruitWebApp.Models.Applicant
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Applicant: Personal Information</h2><br />
+
+@using (Html.BeginForm("Create", "Applicant", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <descrip>
+        
+        <br />
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.UserName, new { @Value = @ViewBag.AppName })
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.UserId, new { @Value = @ViewBag.AppID })
+            @Html.ValidationMessageFor(model => model.UserId)
+        </div>
+
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.Password, new { @Value = @ViewBag.AppPass })
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("First Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Last Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Date Of Birth")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateOfBirth)
+            @Html.ValidationMessageFor(model => model.DateOfBirth)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Gender)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Gender, new List<SelectListItem> { new SelectListItem { Text = "Male" }, { new SelectListItem { Text = "Female" } } })
+            @Html.ValidationMessageFor(model => model.Gender)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CountryId, "Country")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CountryId")
+            @Html.ValidationMessageFor(model => model.CountryId)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Employment Status")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.EmploymentStatus, new List<SelectListItem> { new SelectListItem { Text = "Employed" }, { new SelectListItem { Text = "Unemployed" } } })
+            @Html.ValidationMessageFor(model => model.EmploymentStatus)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Highest Academic Qualification")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.AcademicQualification, new List<SelectListItem> { new SelectListItem { Text = "Bachelor" }, new SelectListItem { Text = "Master" }, new SelectListItem { Text = "PhD" } })
+            @Html.ValidationMessageFor(model => model.AcademicQualification)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Study Specialism")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StudySpecialism)
+            @Html.ValidationMessageFor(model => model.StudySpecialism)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Upload Your CV : ")
+        </div>
+        <div class="editor-field">
+            <input type="file" name="CV" id="CV" accept="application/pdf"  onchange="validation()" />
+            @Html.HiddenFor(model => model.CV, new { @Value = @ViewBag.AppID + ".pdf" })
+            @Html.ValidationMessageFor(model => model.CV)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Upload Your Personal Image : ")
+        </div>
+        <div class="editor-field">
+            <input type="file" name="PersonalImage" id="PersonalImage" accept="image/jpg" onchange="validationImg()" />
+            @Html.HiddenFor(model => model.PersonalImage, new { @Value = @ViewBag.AppID + ".jpg" })
+            @Html.ValidationMessageFor(model => model.PersonalImage)
+          
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Phone Number ")
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.PhoneNum)*@
+            <input type="number" name="PhoneNum" id="PhoneNum" maxlength="10" required />
+             @Html.ValidationMessageFor(model => model.PhoneNum)
+        </div>
+        <br />
+
+        <p>
+            <input type="submit" value="Register" />
+        </p>
+    </descrip>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+    function validation() {
+
+        var fname = (document.getElementById('CV').value).substring(12);
+
+        var re = /(\.pdf)$/i;
+
+        if (re.exec(fname)) {
+
+            document.getElementById('CV').value = (document.getElementById('CV').value).substring(12);
+
+        }
+
+        else
+
+            alert("Invalid type. Only the following types (pdf) are supported.");
+
+    }
+
+    
+
+</script>
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+    function validationImg() {
+
+        var fname = (document.getElementById('PersonalImage').value).substring(12);
+
+        var re = /(\.jpg)$/i;
+
+        if (re.exec(fname)) {
+
+            document.getElementById('PersonalImage').value = (document.getElementById('PersonalImage').value).substring(12);
+
+        }
+
+        else
+
+            alert("Invalid type. Only the following types (jpg) are supported.");
+
+    }
+</script>

@@ -1,0 +1,100 @@
+﻿@model RecruitWebApp.Models.Company
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Company Info:</h2><br />
+
+@using (Html.BeginForm("Create", "Company", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+  
+    <descrip>
+        <br />
+
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.CompId, new { @Value = @ViewBag.ComID })
+            @Html.ValidationMessageFor(model => model.CompId)
+        </div>
+        <div class="editor-label">
+            @Html.Label("Company Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompanyName)
+            @*@Html.HiddenFor(model => model.CompanyName, new { @Value = @ViewBag.ComName })*@
+            @Html.ValidationMessageFor(model => model.CompanyName)
+        </div>
+
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.Password, new { @Value = @ViewBag.ComPass })
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CountryId, "Country")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CountryId")
+            @Html.ValidationMessageFor(model => model.CountryId)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Establish Date")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EstablishDate)
+            @Html.ValidationMessageFor(model => model.EstablishDate)
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.Label("Upload Company Logo (png) : ")
+        </div>
+        <div class="editor-field">
+            <input type="file" name="Logo" id="Logo" accept="image/png" onchange="validationImg()" />
+            @Html.HiddenFor(model => model.Logo, new { @Value = @ViewBag.ComID + ".png" })
+            @Html.ValidationMessageFor(model => model.Logo)
+          
+        </div>
+        <br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.About)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.About)
+            @Html.ValidationMessageFor(model => model.About)
+        </div>
+        <br />
+
+        <p>
+            <input type="submit" value="Register" />
+        </p>
+    </descrip>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript">
+    function validationImg() {
+
+        var fname = (document.getElementById('Logo').value).substring(12);
+
+        var re = /(\.png)$/i;
+
+        if (re.exec(fname)) {
+
+            document.getElementById('Logo').value = (document.getElementById('Logo').value).substring(12);
+
+        }
+
+        else
+
+            alert("Invalid Logo type. Only the following types (png) are supported.");
+
+    }
+</script>
