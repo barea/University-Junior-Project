@@ -1,4 +1,6 @@
 # University-Junior-Project
 Recruitment Web Application
-This web app Allows the employer the announcement of job opportunities on the Web by entering the details of the job vacancy.
-job seekers can looking for job vacancy by using multiple filtering tools and send request for apply, employer receives these requests and filter them, read applicants details and cv.
+It's a web app for Job searching and applying. It allows employers to register their companies and announce for job opportunities.
+Job seekers can look for job vacancies using multiple filters. Also they can login and apply for available vacancies by filling their professional information and uploading their CV document. Employer will receive and filter these applications where they can read applicants details and download their CV.
+
+The web app implemented using ASP.NET MVC4.
